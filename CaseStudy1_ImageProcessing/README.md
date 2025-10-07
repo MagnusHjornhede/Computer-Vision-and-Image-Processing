@@ -1,5 +1,5 @@
-# Case Study 1 — Fundamentals of Image Processing (Barbara, Flower, Clock)
-
+# Image Processing (Barbara, Flower, Clock) - (reworked old work)
+ 
  Magnus H
 **Topics:** image loading & typing, grayscale conversion, resizing, brightness & histograms, noise modeling (SNR→variance), denoising (average vs. median), edge detection (Sobel/LoG/Canny), multi-scale template matching (NCC).  
 **Tools:** MATLAB, Python (OpenCV), Peter Corke Machine Vision Toolbox
@@ -9,7 +9,7 @@
 ## 1) Getting Familiar with Images & Processing Tools
 
 ### 1.1 Loading *Barbara* three ways
-I verified consistency across loaders and dtypes:
+Start by verifing consistency across loaders and dtypes:
 
 - From `.mat` (MATLAB)
 - From `.png` using MATLAB Image Processing Toolbox (IPT)
@@ -137,18 +137,43 @@ Here, \(\sigma^2_{\text{signal}}=0.0516 \Rightarrow \sigma^2_{\text{noise}}\appr
 ![Template detected](./images/task4_result.png)  
 *Best NCC ≈ 0.67; rectangle marks detected location.*
 
-**Tips**
+
 - Edge-based preprocessing reduces lighting sensitivity.  
 - A light Gaussian blur can stabilize NCC maps.  
 - For multiple targets, apply non-max suppression on the NCC heatmap.
 
+## 🧭 Discussion & Takeaways
+- **SNR math → filter sizing:**  
+  By computing the noise variance directly from a given SNR (for example, 20 dB), filtering became a **quantitative design decision** rather than trial-and-error.  
+  Knowing the signal-to-noise ratio allows you to select kernel sizes that balance noise suppression and detail retention — large kernels for lower SNR (noisier images) and smaller kernels for higher SNR (cleaner images).
+
+- **Median vs Average → match the filter to the noise type:**  
+  Gaussian noise (continuous fluctuations) responds best to an **average filter**, while impulse noise (salt & pepper) is better removed by a **median filter** that preserves edges.  
+  When both noise types were present, a **sequential combination** (average → median) leveraged both approaches to achieve the cleanest restoration.
+
+- **Canny for robust edge detection:**  
+  Compared to Sobel and Laplacian-of-Gaussian, **Canny** consistently produced **thin, stable, and connected** edges thanks to its Gaussian pre-filtering, non-maximum suppression, and hysteresis thresholds.  
+  This makes it a strong default choice for **segmentation, contour extraction, or feature matching** stages later in the pipeline.
+
+- **NCC + edges + multi-scale search:**  
+  Normalized Cross-Correlation (NCC) is most reliable when comparing **edge-based representations** rather than raw intensities.  
+  Edge preprocessing removes brightness dependency, while a **multi-scale pyramid search** ensures templates can be matched even when size or viewpoint changes.  
+  The result is a correlation method that’s far more **robust to illumination and scale variation**, giving accurate and repeatable template localization.
+
 ---
 
-## Lessons Learned
+### 🔗 Integrated Understanding
 
-- **SNR math → filter sizing:** quantitative noise estimates guide kernel choice.  
-- **Median vs. Average:** choose by noise family; combine when both are present.  
-- **Canny** is a strong default for downstream detection/segmentation.  
-- **NCC** benefits from edges + multi-scale search.
+All four insights connect into a single low-level vision sequence:
 
----
+| Processing Step | Purpose | Broader Role |
+|-----------------|----------|--------------|
+| **SNR-based filtering** | Quantify and control noise reduction | Foundation for reliable preprocessing |
+| **Filter type selection** | Adapt to different noise distributions | Preserve image structure and edge integrity |
+| **Edge detection (Canny)** | Extract stable, continuous boundaries | Provide clean input for segmentation or feature matching |
+| **Template matching (NCC)** | Recognize geometric patterns across scales | Early stage toward object detection and localization |
+
+Together they form a **progressive vision pipeline:**  
+raw pixels → denoised → edges → pattern recognition.  
+
+These relationships explain why the techniques from Lab 1 build the foundation for later modules such as **feature detection, segmentation, and stereo vision**, where the quality of early preprocessing determines the reliability of all higher-level results.
