@@ -163,18 +163,14 @@ Here, \(\sigma^2_{\text{signal}}=0.0516 \Rightarrow \sigma^2_{\text{noise}}\appr
 
 ---
 
-### 🔗 Integrated Understanding
-
-All four insights connect into a single low-level vision sequence:
+### Summery
 
 | Processing Step | Purpose | Broader Role |
 |-----------------|----------|--------------|
-| **SNR-based filtering** | Quantify and control noise reduction | Foundation for reliable preprocessing |
-| **Filter type selection** | Adapt to different noise distributions | Preserve image structure and edge integrity |
-| **Edge detection (Canny)** | Extract stable, continuous boundaries | Provide clean input for segmentation or feature matching |
+| **SNR-based filtering** | Control noise reduction | For reliable preprocessing |
+| **Filter type selection** | Adapt to different noise distributions | keep image structure and the edge integrity |
+| **Edge detection (Canny)** | Extract continuous boundaries | Provides a clean input for segmentation or feature matching |
 | **Template matching (NCC)** | Recognize geometric patterns across scales | Early stage toward object detection and localization |
 
-Together they form a **progressive vision pipeline:**  
+**Vision pipeline:**  
 raw pixels → denoised → edges → pattern recognition.  
-
-These relationships explain why the techniques from Lab 1 build the foundation for later modules such as **feature detection, segmentation, and stereo vision**, where the quality of early preprocessing determines the reliability of all higher-level results.
