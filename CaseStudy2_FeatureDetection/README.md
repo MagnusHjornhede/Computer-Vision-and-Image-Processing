@@ -1,144 +1,122 @@
 # 🔎 Lab 2 — Image Feature Detection and Matching (Reworked)
 
 **Author:** Magnus Hjornhede  
-**Topics:** Harris corners (custom vs OpenCV), parameter tuning, SIFT keypoints & matching, ORB on stereo datasets, performance metrics  
-**Tools:** Python (OpenCV), MATLAB (where applicable)
+**Topics:** Harris corners (custom vs OpenCV), parameter tuning, SIFT keypoints & matching, ORB stereo matching, robotics dataset performance  
+**Tools:** Python (Colab + OpenCV)
 
 ---
 
-## 1) Task 1 — Harris Corner Detector (Custom vs OpenCV)
+## 1️⃣ Task 1 — Harris Corner Detector (Custom vs OpenCV)
 
-Implemented a **custom Harris Corner Detector** and compared to OpenCV’s built-in version.
+Implemented a **custom Harris Corner Detector** from scratch and compared it to OpenCV’s built-in function to explore **corner response, rotation/scale sensitivity, and parameter influence**.
 
-### Harris Corner Detector Algorithm
-1. **Grayscale conversion**  
-2. **Gradients (Sobel)** in \(x\) and \(y\)  
-3. **Gaussian smoothing** of gradient products  
-4. **Harris response** using determinant/trace of the second-moment matrix  
-5. **Non-maximum suppression + thresholding** to keep strong corners
+### Harris Corner Algorithm
+1. **Convert to grayscale**  
+2. **Compute gradients** using Sobel filters (\(x,y\))  
+3. **Smooth gradients** via Gaussian blur  
+4. **Compute Harris response** (determinant / trace of second-moment matrix)  
+5. **Apply non-maximum suppression + thresholding** to retain strong corners  
 
-### Results (Corner Counts)
-- **Custom Harris — Original:** 13  
-- **Custom Harris — Rotated:** 13  
-- **Custom Harris — Scaled 50 %:** 12  
-- **Custom Harris — Scaled 200 %:** 14  
-- **OpenCV Harris — Original:** 272  
-- **OpenCV Harris — Rotated:** 305  
-- **OpenCV Harris — Scaled 50 %:** 269  
-- **OpenCV Harris — Scaled 200 %:** 367
+### Quantitative Results
+| Variant | Corners Detected |
+|:--|:--:|
+| Custom Harris – Original | 13 |
+| Custom Harris – Rotated | 13 |
+| Custom Harris – Scaled 0.5× | 12 |
+| Custom Harris – Scaled 2× | 14 |
+| OpenCV Harris – Original | 272 |
+| OpenCV Harris – Rotated | 305 |
+| OpenCV Harris – Scaled 0.5× | 269 |
+| OpenCV Harris – Scaled 2× | 367 |
 
-**Visuals**
+### Visuals
+![Custom Harris – original](./images/custom_harris_original.png)  
+![Custom Harris – rotated](./images/custom_harris_rotated.png)  
+![OpenCV Harris – original](./images/opencv_harris_original.png)  
+![OpenCV Harris – rotated](./images/opencv_harris_rotated.png)
 
-![Custom Harris — original](./images/custom_harris_original.png)  
-*Custom Harris corners on `left.jpg`.*
-
-![Custom Harris — rotated](./images/custom_harris_rotated.png)  
-*Custom Harris corners on 45° rotated image.*
-
-![OpenCV Harris — original](./images/opencv_harris_original.png)  
-*OpenCV Harris corners on `left.jpg`.*
-
-![OpenCV Harris — rotated](./images/opencv_harris_rotated.png)  
-*OpenCV Harris corners on 45° rotated image.*
-
-### Rotation Effect
-Custom implementation stayed **stable** (13 → 13).  
-OpenCV detected **slightly more** corners after rotation (272 → 305).
-
-### Scaling Effect
-Downscaling to 0.5× reduced detail and corners; upscaling to 2× increased detected corners for OpenCV (272 → 367).  
-Both methods are sensitive to **scale and detail density** (more pixels → more detectable corners).
-
-### Parameter Tuning (Harris)
-- **Harris constant \(k\)**: lower (e.g., \(k=0.04\)) → more sensitive (detects weaker corners).  
-- **Threshold**: lower threshold → more detections but more noise; OpenCV returns full response, you threshold later.  
-- **Sobel kernel**: smaller (3) captures finer details but may be noisier.  
-- **Gaussian kernel**: (e.g., \(5\times5\)) reduces noise while keeping salient corners.
+### Interpretation
+- **Rotation robustness:** Custom Harris was stable (13 → 13); OpenCV detected extra weak responses (272 → 305).  
+- **Scale sensitivity:** Upscaling creates more pixel gradients → more corners.  
+- **Parameter effects:** Low *k* ≈ 0.04 = more sensitive; low threshold = noisier; Gaussian blur = less noise.  
 
 ---
 
-## 2) Task 2 — SIFT Detection and Matching
+## 2️⃣ Task 2 — SIFT Detection and Matching
 
-**SIFT** provides **scale- and rotation-invariant** keypoints and robust descriptors.
+Applied **SIFT** (Scale-Invariant Feature Transform) to test its **robustness to scale and rotation** and compared it against Harris + ORB descriptors.
 
-**Matches:**
+### SIFT Results
+![SIFT – left/right](./images/sift_matches.png)  
+![SIFT – Notre Dame](./images/sift_matches_notre_dame.png)
 
-![SIFT — left/right](./images/sift_matches.png)  
-*SIFT matches between `left.jpg` and `right.jpg`.*
-
-![SIFT — Notre Dame](./images/sift_matches_notre_dame.png)  
-*SIFT matches between `notre dame1.jpg` and `notre dame2.jpg`.*
-
-### Harris→Keypoints + ORB Descriptors
-Converted Harris corners to keypoints and used **ORB** descriptors for matching as a baseline:
-
-![Harris+ORB — left/right](./images/harris_matches_left_right.png)  
-*Harris corners as keypoints + ORB descriptors on left/right.*
-
-![Harris+ORB — Notre Dame](./images/harris_matches_notre_dame.png)  
-*Harris corners as keypoints + ORB descriptors on Notre Dame pair.*
+### Harris → Keypoints + ORB Descriptors
+![Harris+ORB – left/right](./images/harris_matches_left_right.png)  
+![Harris+ORB – Notre Dame](./images/harris_matches_notre_dame.png)
 
 ### Observations
-- **SIFT** found **more** and **better-distributed** keypoints; matching was robust to rotation/scale (some redundancy/clusters expected).  
-- **Harris(+ORB)** produced **fewer** keypoints and struggled more on complex scenes.
+- **SIFT:** high density of keypoints, robust under rotation and scale changes, some redundancy expected.  
+- **Harris (+ ORB):** lightweight and fast but detects fewer points and misses complex textures.  
+- **Trade-off:** SIFT = accuracy and invariance; Harris + ORB = efficiency for real-time systems.  
 
 ---
 
-## 3) Task 3 — Feature Matching in a Robotic Scenario
+## 3️⃣ Task 3 — Feature Matching in a Robotic Scenario
 
-Applied feature matching to two **stereo datasets**:
-- **Custom dataset** from a Boston Dynamics Spot robot  
-- **PennCOSYVIO** dataset
+Applied feature matching to two stereo datasets using **ORB + Brute-Force matcher**:
 
-Used **ORB** detector and **Brute-Force** matcher.
+- **Custom dataset** (Boston Dynamics Spot robot)  
+- **PennCOSYVIO** dataset  
 
 ### Performance Metrics
-- **Custom dataset**
-  - FPS: **112.13**
-  - Avg matches per pair: **11.03**
-  - Failed matches: **0**
-- **PennCOSYVIO**
-  - FPS: **53.31**
-  - Avg matches per pair: **231.04**
-  - Failed matches: **0**
+| Dataset | FPS | Avg Matches / Pair | Failed Pairs |
+|:--|:--:|:--:|:--:|
+| Custom (Spot) | 112.1 | 11.0 | 0 |
+| PennCOSYVIO | 53.3 | 231.0 | 0 |
 
-**Examples (PennCOSYVIO):**
+### Examples (PennCOSYVIO)
+![Pair 10 Penn](./images/pair_10_matches_penn.png)  
+![Pair 15 Penn](./images/pair_15_matches_penn.png)  
+![Pair 20 Penn](./images/pair_20_matches_penn.png)
 
-![Penn — pair 10](./images/pair_10_matches_penn.png)  
-![Penn — pair 15](./images/pair_15_matches_penn.png)  
-![Penn — pair 20](./images/pair_20_matches_penn.png)
+### Examples (Custom Dataset)
+![Pair 10 Custom](./images/pair_10_matches_custom.png)  
+![Pair 15 Custom](./images/pair_15_matches_custom.png)  
+![Pair 20 Custom](./images/pair_20_matches_custom.png)
 
-**Examples (Custom):**
-
-![Custom — pair 10](./images/pair_10_matches_custom.png)  
-![Custom — pair 15](./images/pair_15_matches_custom.png)  
-![Custom — pair 20](./images/pair_20_matches_custom.png)
-
-### Observations
-- **Custom dataset**: fewer matches — simpler texture, potential noise/low light, and **poorer stereo overlap**.  
-- **PennCOSYVIO**: richer texture and better overlap → many more matches.
+### Analysis
+- **Custom dataset:** few distinct features → low match count despite high FPS (speed > quality).  
+- **PennCOSYVIO:** dense textures and good overlap → hundreds of matches.  
+- **Insight:** texture and stereo geometry matter more than raw speed for stable matching.  
 
 ---
 
 ## 🧭 Discussion & Takeaways
 
-- **Custom vs OpenCV Harris**  
-  Custom implementation is **selective and stable** across rotation; OpenCV is **more sensitive**, detecting many more corners (useful for dense matching but needs stronger NMS/thresholding).
+### 🔹 Corner Detectors
+- Custom Harris is stable and precise; OpenCV detects dense responses needing post-filtering.  
+- Multi-scale pyramids help normalize scale differences in real scenes.
 
-- **Scale & detail density**  
-  Upscaling increases detectable structure → more corners; downscaling removes fine detail → fewer corners. Use **pyramids** or detectors like **SIFT** for scale robustness.
+### 🔹 Descriptor and Matcher Comparisons
+- **SIFT** offers robust, repeatable matches across illumination and viewpoint changes.  
+- **Harris + ORB** is faster but less stable for complex imagery.  
+- SIFT is ideal for mapping / SLAM; ORB fits embedded real-time applications.
 
-- **SIFT vs Harris(+ORB)**  
-  SIFT provides **strong invariance** and **dense, well-distributed** keypoints → better matching under viewpoint/scale changes. Harris+ORB is lighter but less robust on complex scenes.
-
-- **Robotics datasets**  
-  Matching quality depends heavily on **texture richness** and **stereo overlap**. High-FPS with few matches can still be insufficient for geometry; prefer **quality over quantity** + geometric verification (e.g., **RANSAC**).
+### 🔹 Robotics Dataset Insights
+- Feature density depends on scene texture and camera baseline.  
+- High FPS alone is not enough; **feature quality and geometric consistency** are crucial.  
+- Combine ORB or SIFT with **RANSAC + epipolar filtering** for reliable pose estimation.
 
 ---
 
-## 📌 Notes on Reproduction
+## 🧩 Integrated Understanding
 
-- Place all figures referenced above in:  
-  `CaseStudy2_FeatureDetection/images/`  
-  and keep links as `./images/<filename>`.
-- For code, save outputs directly into each task’s `images/` folder (as done in Lab 1).
+| Stage | Purpose | Broader Role |
+|:--|:--|:--|
+| **Harris Corner Detection** | Identify repeatable interest points | Foundation for feature descriptors |
+| **SIFT Descriptors** | Capture scale/rotation-invariant signatures | Enable cross-view matching |
+| **ORB + Brute Force** | Efficient real-time matching | Supports stereo vision & odometry |
+| **Evaluation (FPS + Match Count)** | Quantify speed vs robustness | Balance accuracy and efficiency in robot vision |
+
+Together these steps show how modern vision pipelines progress from low-level corner math to high-level 3D understanding.  
+They form the practical foundation for **stereo vision, structure-from-motion, and robotic localization** tasks that follow in later labs.
