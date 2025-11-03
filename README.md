@@ -1,46 +1,62 @@
 # 🧠 Computer Vision and Image Processing
 
-This repository contains a collection of **case studies and experiments** exploring key techniques in computer vision and digital image processing.  
-Each case study demonstrates a core concept through hands-on implementations, visualization, and analysis.
+A collection of **applied computer vision experiments** exploring the essential techniques behind modern image analysis.  
+Each case study combines **algorithmic understanding**, **clean implementation**, and **visual results**, demonstrating practical mastery of classical vision methods.
 
 ---
 
 ## 📚 Overview
 
-The goal of this repository is to **apply fundamental and intermediate-level computer vision methods** to practical examples.  
-It is designed for students and researchers who want to understand both the *mathematical foundation* and the *applied coding techniques* in this field.
+This project showcases how to **design, implement, and evaluate** computer vision pipelines using Python and OpenCV.  
+The focus is on producing **interpretable results**, connecting mathematical concepts with visual intuition, and building reusable components for real-world applications.
+
+It demonstrates capabilities relevant to roles in:
+- Computer Vision / Machine Learning Engineering  
+- Applied AI Development  
+- Research & Prototyping for Intelligent Systems  
 
 ---
 
 ## 🧩 Structure
 
 ### 1. CaseStudy1_ImageProcessing
-Focuses on basic image transformations and filtering:
-- Grayscale conversion, histogram equalization  
-- Smoothing and sharpening filters  
-- Edge enhancement and noise reduction  
-- Color space manipulations (RGB ↔ HSV)
+Explores foundational image operations and transformations:
+- Grayscale conversion and histogram equalization  
+- Smoothing, sharpening, and denoising filters  
+- Color-space manipulation (RGB ↔ HSV)  
+- Visual evaluation of filter impact on image quality  
+
+🧩 *Demonstrates*: signal enhancement, spatial filtering, visual quality assessment.
+
+---
 
 ### 2. CaseStudy2_FeatureDetection
-Covers techniques for identifying and describing key image features:
-- Harris Corner Detector  
-- SIFT / SURF-style methods (conceptually, using open alternatives)  
-- Template matching and feature tracking  
-- Real-world use: motion and object detection
+Implements core feature extraction and tracking methods:
+- Harris Corner Detector and edge-based features  
+- Template matching and keypoint comparison  
+- Feature tracking across frames for motion detection  
+
+🧩 *Demonstrates*: geometric analysis, object tracking logic, pattern recognition.
+
+---
 
 ### 3. CaseStudy3_Segmentation
-Demonstrates how to separate meaningful structures from background:
+Segmentation of images into meaningful regions using:
 - Thresholding (global, adaptive, Otsu)  
-- Region-based and contour-based segmentation  
-- K-means and Watershed clustering  
-- Application to medical or industrial images
+- Region growing and contour detection  
+- K-means clustering and Watershed algorithms  
+
+🧩 *Demonstrates*: unsupervised learning concepts, data preprocessing, region-based object separation.
+
+---
 
 ### 4. CaseStudy4_StereoVision
-Explores the geometry of 3D vision and depth estimation:
-- Stereo image rectification  
-- Disparity maps  
-- Depth-from-stereo computation  
-- Visualization and real-world considerations
+Explores 3D perception through binocular vision:
+- Stereo rectification and calibration  
+- Disparity map computation  
+- Depth estimation and visualization  
+
+🧩 *Demonstrates*: 3D geometry understanding, epipolar constraints, spatial reasoning.
 
 ---
 
@@ -49,15 +65,52 @@ Explores the geometry of 3D vision and depth estimation:
 - **Python 3.x**  
 - **OpenCV (cv2)**  
 - **NumPy**, **Matplotlib**, **Scikit-image**  
-- Jupyter Notebook for demonstration and visualization
+- **Jupyter Notebook** for documentation and visualization
+
+All experiments are modular, well-commented, and reproducible.
 
 ---
 
-## 🧠 Learning Goals
+## 🧠 Key Skills Demonstrated
 
-- Strengthen understanding of **image processing fundamentals**  
-- Gain experience implementing **classical vision algorithms**  
-- Build modular and reproducible **experiment pipelines**  
-- Prepare for advanced research in **Machine Learning and Computer Vision**
+- Proficiency in **classical computer vision algorithms**  
+- Strong foundation in **image preprocessing and analysis pipelines**  
+- Understanding of **geometric and spatial reasoning**  
+- Data visualization and performance evaluation  
+- Writing clean, modular, and maintainable **Python code**  
+- Analytical approach to debugging and experimentation  
 
 ---
+
+## 📈 Results and Outcomes
+
+- Implemented and visualized multiple computer vision techniques end-to-end  
+- Optimized algorithms for clarity, efficiency, and reproducibility  
+- Produced interpretable visual outputs highlighting performance differences  
+- Built a foundation for transitioning from classical CV to **deep learning-based vision** frameworks  
+
+---
+
+## 🚀 Future Extensions
+
+- Integrate **deep neural methods** (U-Net, Mask R-CNN) for segmentation  
+- Add **real-time applications** with camera input  
+- Explore **depth fusion and SLAM** concepts  
+
+---
+
+## 👤 Author
+
+**Magnus Hjörnhede**  
+Applied AI & Computer Vision Researcher  
+Passionate about bridging **theory, code, and visual insight** to build interpretable, intelligent systems.
+
+---
+
+## 📄 License
+
+MIT License — see [LICENSE](LICENSE) for details.
+
+---
+
+> *“Vision is the art of seeing what is invisible to others.” — Jonathan Swift*
