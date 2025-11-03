@@ -1,4 +1,4 @@
-# Image Feature Detection and Matching (Reworked)
+# Image Feature Detection and Matching
 
 Magnus H
 
