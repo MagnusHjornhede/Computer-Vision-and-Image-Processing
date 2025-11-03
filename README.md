@@ -103,14 +103,11 @@ All experiments are modular, well-commented, and reproducible.
 
 **Magnus Hjörnhede**  
 Applied AI & Computer Vision Researcher  
-Passionate about bridging **theory, code, and visual insight** to build interpretable, intelligent systems.
 
 ---
 
 ## 📄 License
 
-MIT License — see [LICENSE](LICENSE) for details.
+MIT License 
 
 ---
-
-> *“Vision is the art of seeing what is invisible to others.” — Jonathan Swift*
