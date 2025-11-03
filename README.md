@@ -61,10 +61,3 @@ Explores the geometry of 3D vision and depth estimation:
 - Prepare for advanced research in **Machine Learning and Computer Vision**
 
 ---
-
-## 🧪 Getting Started
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/<your-username>/Computer-Vision-and-Image-Processing.git
-   cd Computer-Vision-and-Image-Processing
