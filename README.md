@@ -1,11 +1,11 @@
-# 🧠 Computer Vision and Image Processing
+# Computer Vision and Image Processing
 
 A collection of **applied computer vision experiments** exploring the essential techniques behind modern image analysis.  
 Each case study combines **algorithmic understanding**, **clean implementation**, and **visual results**, demonstrating practical mastery of classical vision methods.
 
 ---
 
-## 📚 Overview
+## Overview
 
 This project showcases how to **design, implement, and evaluate** computer vision pipelines using Python and OpenCV.  
 The focus is on producing **interpretable results**, connecting mathematical concepts with visual intuition, and building reusable components for real-world applications.
@@ -17,7 +17,7 @@ It demonstrates capabilities relevant to roles in:
 
 ---
 
-## 🧩 Structure
+## Structure
 
 ### 1. CaseStudy1_ImageProcessing
 Explores foundational image operations and transformations:
@@ -71,7 +71,7 @@ All experiments are modular, well-commented, and reproducible.
 
 ---
 
-## 🧠 Key Skills Demonstrated
+## Key Skills Demonstrated
 
 - Proficiency in **classical computer vision algorithms**  
 - Strong foundation in **image preprocessing and analysis pipelines**  
@@ -82,7 +82,7 @@ All experiments are modular, well-commented, and reproducible.
 
 ---
 
-## 📈 Results and Outcomes
+## Results and Outcomes
 
 - Implemented and visualized multiple computer vision techniques end-to-end  
 - Optimized algorithms for clarity, efficiency, and reproducibility  
@@ -91,7 +91,7 @@ All experiments are modular, well-commented, and reproducible.
 
 ---
 
-## 🚀 Future Extensions
+## Future Extensions
 
 - Integrate **deep neural methods** (U-Net, Mask R-CNN) for segmentation  
 - Add **real-time applications** with camera input  
@@ -99,14 +99,14 @@ All experiments are modular, well-commented, and reproducible.
 
 ---
 
-## 👤 Author
+## Author
 
 **Magnus Hjörnhede**  
 Applied AI & Computer Vision Researcher  
 
 ---
 
-## 📄 License
+## License
 
 MIT License 
 
