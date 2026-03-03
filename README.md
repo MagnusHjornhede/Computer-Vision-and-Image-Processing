@@ -1,113 +1,139 @@
 # Computer Vision and Image Processing
 
-A collection of **applied computer vision experiments** exploring the essential techniques behind modern image analysis.  
-Each case study combines **algorithmic understanding**, **clean implementation**, and **visual results**, demonstrating practical mastery of classical vision methods.
-
 ---
 
-## Overview
+## Project Purpose
 
-This project showcases how to **design, implement, and evaluate** computer vision pipelines using Python and OpenCV.  
-The focus is on producing **interpretable results**, connecting mathematical concepts with visual intuition, and building reusable components for real-world applications.
+Modern computer vision systems rely on strong foundations in classical image processing.  
+This project focuses on implementing those foundations clearly and correctly, with emphasis on interpretability, clean structure, and reproducibility.
 
-It demonstrates capabilities relevant to roles in:
-- Computer Vision / Machine Learning Engineering  
+It highlights the ability to:
+
+- Translate mathematical concepts into working code  
+- Build modular and reusable processing pipelines  
+- Analyze visual outputs critically  
+- Connect theory with practical experimentation  
+
+Relevant for roles in:
+
+- Computer Vision Engineering  
+- Machine Learning Engineering  
 - Applied AI Development  
-- Research & Prototyping for Intelligent Systems  
+- Research & Prototyping  
 
 ---
 
-## Structure
+## Case Studies
 
-### 1. CaseStudy1_ImageProcessing
-Explores foundational image operations and transformations:
+### 1. Image Processing Fundamentals
+
+Focus: improving and analyzing image quality.
+
+Implemented techniques include:
+
 - Grayscale conversion and histogram equalization  
-- Smoothing, sharpening, and denoising filters  
-- Color-space manipulation (RGB ↔ HSV)  
-- Visual evaluation of filter impact on image quality  
+- Image smoothing, sharpening, and denoising  
+- Color space transformations (RGB ↔ HSV)  
+- Visual comparison of filter effects  
 
-🧩 *Demonstrates*: signal enhancement, spatial filtering, visual quality assessment.
-
----
-
-### 2. CaseStudy2_FeatureDetection
-Implements core feature extraction and tracking methods:
-- Harris Corner Detector and edge-based features  
-- Template matching and keypoint comparison  
-- Feature tracking across frames for motion detection  
-
-🧩 *Demonstrates*: geometric analysis, object tracking logic, pattern recognition.
+This section covers core image enhancement and spatial filtering techniques.
 
 ---
 
-### 3. CaseStudy3_Segmentation
-Segmentation of images into meaningful regions using:
-- Thresholding (global, adaptive, Otsu)  
+### 2. Feature Detection and Tracking
+
+Focus: identifying and tracking meaningful structures in images.
+
+Techniques implemented:
+
+- Harris Corner Detection  
+- Edge-based feature extraction  
+- Template matching  
+- Frame-to-frame feature tracking  
+
+This section explores geometric relationships and motion tracking logic.
+
+---
+
+### 3. Image Segmentation
+
+Focus: separating images into meaningful regions.
+
+Methods explored:
+
+- Global and adaptive thresholding (including Otsu)  
 - Region growing and contour detection  
-- K-means clustering and Watershed algorithms  
+- K-means clustering  
+- Watershed segmentation  
 
-🧩 *Demonstrates*: unsupervised learning concepts, data preprocessing, region-based object separation.
+This section combines rule-based methods and unsupervised clustering for region-based object separation.
 
 ---
 
-### 4. CaseStudy4_StereoVision
-Explores 3D perception through binocular vision:
-- Stereo rectification and calibration  
+### 4. Stereo Vision and Depth Estimation
+
+Focus: 3D perception from 2D image pairs.
+
+Implemented components:
+
+- Stereo calibration and rectification  
 - Disparity map computation  
 - Depth estimation and visualization  
 
-🧩 *Demonstrates*: 3D geometry understanding, epipolar constraints, spatial reasoning.
+This section works with epipolar geometry and spatial depth reconstruction.
 
 ---
 
-## Technologies
+## Technologies Used
 
-- **Python 3.x**  
-- **OpenCV (cv2)**  
-- **NumPy**, **Matplotlib**, **Scikit-image**  
-- **Jupyter Notebook** for documentation and visualization
+- Python 3  
+- OpenCV  
+- NumPy  
+- Matplotlib  
+- Scikit-image  
+- Jupyter Notebook  
 
-All experiments are modular, well-commented, and reproducible.
-
----
-
-## Key Skills Demonstrated
-
-- Proficiency in **classical computer vision algorithms**  
-- Strong foundation in **image preprocessing and analysis pipelines**  
-- Understanding of **geometric and spatial reasoning**  
-- Data visualization and performance evaluation  
-- Writing clean, modular, and maintainable **Python code**  
-- Analytical approach to debugging and experimentation  
+All experiments are modular, readable, and reproducible.
 
 ---
 
-## Results and Outcomes
+## Skills Highlighted
 
-- Implemented and visualized multiple computer vision techniques end-to-end  
-- Optimized algorithms for clarity, efficiency, and reproducibility  
-- Produced interpretable visual outputs highlighting performance differences  
-- Built a foundation for transitioning from classical CV to **deep learning-based vision** frameworks  
+- Classical computer vision algorithm implementation  
+- Image preprocessing and enhancement pipelines  
+- Geometric and spatial reasoning  
+- Data visualization and comparative analysis  
+- Writing clean, maintainable Python code  
 
 ---
 
-## Future Extensions
+## Results
 
-- Integrate **deep neural methods** (U-Net, Mask R-CNN) for segmentation  
-- Add **real-time applications** with camera input  
-- Explore **depth fusion and SLAM** concepts  
+Across the case studies, this project:
+
+- Implements multiple computer vision techniques end-to-end  
+- Produces clear visual outputs for interpretation  
+- Compares different methods under varying conditions  
+- Builds a foundation for transitioning into deep learning–based vision systems  
+
+---
+
+## Future Directions
+
+- Integration of deep learning models (e.g., U-Net, Mask R-CNN)  
+- Real-time camera-based processing  
+- SLAM and depth fusion experiments  
+- Hybrid classical + deep learning pipelines  
 
 ---
 
 ## Author
 
-**Magnus Hjörnhede**  
-Applied AI & Computer Vision Researcher  
+Magnus Hjörnhede  
+Applied AI & Computer Vision  
 
 ---
 
 ## License
 
-MIT License 
-
----
+MIT License
