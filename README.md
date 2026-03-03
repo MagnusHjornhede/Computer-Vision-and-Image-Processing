@@ -1,31 +1,11 @@
-# Computer Vision and Image Processing
-
----
-
-## Project Purpose
-
-Modern computer vision systems rely on strong foundations in classical image processing.  
-This project focuses on implementing those foundations clearly and correctly, with emphasis on interpretability, clean structure, and reproducibility.
-
-It highlights the ability to:
-
-- Translate mathematical concepts into working code  
-- Build modular and reusable processing pipelines  
-- Analyze visual outputs critically  
-- Connect theory with practical experimentation  
-
-Relevant for roles in:
-
-- Computer Vision Engineering  
-- Machine Learning Engineering  
-- Applied AI Development  
-- Research & Prototyping  
-
----
-
 ## Case Studies
 
-### 1. Image Processing Fundamentals
+Each case study is organized in its own folder with code, visual outputs, and documentation.
+
+---
+
+### 1. Image Processing Fundamentals  
+📂 Folder: [CaseStudy1_ImageProcessing](https://github.com/MagnusHjornhede/Computer-Vision-and-Image-Processing/tree/main/CaseStudy1_ImageProcessing)
 
 Focus: improving and analyzing image quality.
 
@@ -36,13 +16,14 @@ Implemented techniques include:
 - Color space transformations (RGB ↔ HSV)  
 - Visual comparison of filter effects  
 
-This section covers core image enhancement and spatial filtering techniques.
+This section builds the foundation for all higher-level vision tasks.
 
 ---
 
-### 2. Feature Detection and Tracking
+### 2. Feature Detection and Tracking  
+📂 Folder: [CaseStudy2_FeatureDetection](https://github.com/MagnusHjornhede/Computer-Vision-and-Image-Processing/tree/main/CaseStudy2_FeatureDetection)
 
-Focus: identifying and tracking meaningful structures in images.
+Focus: identifying and tracking meaningful image structures.
 
 Techniques implemented:
 
@@ -51,11 +32,12 @@ Techniques implemented:
 - Template matching  
 - Frame-to-frame feature tracking  
 
-This section explores geometric relationships and motion tracking logic.
+This case study explores how local patterns and geometric structures can be detected and tracked across images.
 
 ---
 
-### 3. Image Segmentation
+### 3. Image Segmentation  
+📂 Folder: [CaseStudy3_Segmentation](https://github.com/MagnusHjornhede/Computer-Vision-and-Image-Processing/tree/main/CaseStudy3_Segmentation)
 
 Focus: separating images into meaningful regions.
 
@@ -66,11 +48,12 @@ Methods explored:
 - K-means clustering  
 - Watershed segmentation  
 
-This section combines rule-based methods and unsupervised clustering for region-based object separation.
+This section shows how images can be divided into structured regions for object-level understanding.
 
 ---
 
-### 4. Stereo Vision and Depth Estimation
+### 4. Stereo Vision and Depth Estimation  
+📂 Folder: [CaseStudy4_StereoVision](https://github.com/MagnusHjornhede/Computer-Vision-and-Image-Processing/tree/main/CaseStudy4_StereoVision)
 
 Focus: 3D perception from 2D image pairs.
 
@@ -80,60 +63,4 @@ Implemented components:
 - Disparity map computation  
 - Depth estimation and visualization  
 
-This section works with epipolar geometry and spatial depth reconstruction.
-
----
-
-## Technologies Used
-
-- Python 3  
-- OpenCV  
-- NumPy  
-- Matplotlib  
-- Scikit-image  
-- Jupyter Notebook  
-
-All experiments are modular, readable, and reproducible.
-
----
-
-## Skills Highlighted
-
-- Classical computer vision algorithm implementation  
-- Image preprocessing and enhancement pipelines  
-- Geometric and spatial reasoning  
-- Data visualization and comparative analysis  
-- Writing clean, maintainable Python code  
-
----
-
-## Results
-
-Across the case studies, this project:
-
-- Implements multiple computer vision techniques end-to-end  
-- Produces clear visual outputs for interpretation  
-- Compares different methods under varying conditions  
-- Builds a foundation for transitioning into deep learning–based vision systems  
-
----
-
-## Future Directions
-
-- Integration of deep learning models (e.g., U-Net, Mask R-CNN)  
-- Real-time camera-based processing  
-- SLAM and depth fusion experiments  
-- Hybrid classical + deep learning pipelines  
-
----
-
-## Author
-
-Magnus Hjörnhede  
-Applied AI & Computer Vision  
-
----
-
-## License
-
-MIT License
+This case study demonstrates how spatial geometry enables depth perception from camera systems.
