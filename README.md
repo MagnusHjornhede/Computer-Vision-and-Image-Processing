@@ -1,3 +1,29 @@
+# Computer Vision Algorithms
+
+Implementation of classical computer vision algorithms and image processing techniques using Python and OpenCV.
+
+This repository explores fundamental building blocks used in many computer vision systems.
+
+## Implemented Techniques
+
+- Edge detection
+- Image filtering
+- Thresholding
+- Feature extraction
+- Image enhancement
+
+## Technologies
+
+Python  
+OpenCV  
+NumPy
+
+## Goal
+
+The goal of this repository is to understand and implement core computer vision algorithms that form the basis of modern vision pipelines.
+
+
+
 ## Case Studies
 
 Each case study is organized in its own folder with code, visual outputs, and documentation.
